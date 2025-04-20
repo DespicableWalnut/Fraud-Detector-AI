@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Fraud Detector</title>
+  <style>
+    /*fun css that you basiccly copied of w3schools*/
+    * {
+      font-family: sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      /*very awesome gradient bg*/
+      background-color: lightblue; 
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background-color: whitesmoke;
+      padding: 40px 30px;
+      border-radius: 12px;
+      /*cool shadow*/
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: black;
+    }
+
+    label {
+      font-weight: 600;
+      color: black;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 24px;
+      border: 1px solid beige;
+      border-radius: 6px;
+      background-color: #fdfdfd;
+      transition: border 0.3s ease;
+      font-size: 14px;
+    }
+
+    
+    button {
+      background-color: #2979ff;
+      color: white;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <!--html form-->
+  <form action="/submit" method="POST">
+    <h1>AI Fraud Detector</h1>
+
+    <label for="transaction_price">1. Transaction Price:</label>
+    <input type="number" name="transaction_price" placeholder="e.g. 120">
+
+    <label for="time_of_day">2. Time Of Day (0–23):</label>
+    <input type="number" name="time_of_day"  placeholder="e.g. 14">
+
+    <label for="foreign_transaction">3. Foreign Transaction:</label>
+    <select name="foreign_transaction" >
+      <option value="1">True</option>
+      <option value="0">False</option>
+    </select>
+
+    <label for="online_purchase">4. Online Purchase:</label>
+    <select name="online_purchase">
+      <option value="1">True</option>
+      <option value="0">False</option>
+    </select>
+    {% if prediction %}
+      <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+
+    <button type="submit">Check Fraud</button>
+  </form>
+</body>
+</html>
